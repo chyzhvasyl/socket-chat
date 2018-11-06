@@ -1,0 +1,17 @@
+GET / - - - - ms 05/Nov/2018:22:01:05 +0000 1.1
+GET / - - - - ms 05/Nov/2018:22:01:06 +0000 1.1
+GET / - - - - ms 05/Nov/2018:22:01:35 +0000 1.1
+GET / - - - - ms 05/Nov/2018:22:01:46 +0000 1.1
+GET / - - - - ms 05/Nov/2018:22:03:59 +0000 1.1
+GET / - - - - ms 05/Nov/2018:22:05:59 +0000 1.1
+GET /genesis/inline.bundle.js 404 163 - 13.733 ms 05/Nov/2018:22:28:12 +0000 1.1
+GET /genesis/polyfills.bundle.js 404 166 - 49.843 ms 05/Nov/2018:22:28:12 +0000 1.1
+GET /genesis/styles.bundle.js 404 163 - 49.648 ms 05/Nov/2018:22:28:12 +0000 1.1
+GET /genesis/vendor.bundle.js 404 163 - 4.252 ms 05/Nov/2018:22:28:12 +0000 1.1
+GET /genesis/main.bundle.js 404 161 - 11.236 ms 05/Nov/2018:22:28:12 +0000 1.1
+GET /genesis/inline.bundle.js 404 163 - 0.708 ms 05/Nov/2018:22:28:13 +0000 1.1
+GET /genesis/polyfills.bundle.js 404 166 - 0.533 ms 05/Nov/2018:22:28:13 +0000 1.1
+GET /genesis/styles.bundle.js 404 163 - 0.710 ms 05/Nov/2018:22:28:13 +0000 1.1
+GET /genesis/vendor.bundle.js 404 163 - 1.488 ms 05/Nov/2018:22:28:13 +0000 1.1
+GET /genesis/main.bundle.js 404 161 - 0.559 ms 05/Nov/2018:22:28:13 +0000 1.1
+GET /genesis/favicon.ico 404 158 - 0.661 ms 05/Nov/2018:22:28:13 +0000 1.1
