@@ -71,7 +71,7 @@
             <div style="width: 65%" class="form-group ml-3">
               <input [(ngModel)]="message.content" #content = "ngModel"  style="width: 100%"   name="content" required pattern=""  class="form-control"    placeholder="write smth">
             </div>
-            <button [disabled]="content.invalid" type="submit" style="width: 30%"   class="btn btn-info ml-2">send</button>
+            <button [disabled]="content.invalid || content.untouched" type="submit" style="width: 30%"   class="btn btn-info ml-2">send</button>
           </form>
 
 
