@@ -1,0 +1,169 @@
+.chat{
+ width: 100%;
+  display: flex;
+  float: left;
+}
+.chat_block{
+
+  width: 80%;
+}
+.modal-content1 {
+  position: relative;
+  background-color: whitesmoke;
+ width: 100%;
+}
+.modal-header1 {
+  padding: 2px 16px;
+  background-color: rgb(25, 164, 181);
+   width: 100%;
+
+  color: white;
+  height: 30vh
+}
+.close1 {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.close1:hover,
+.close1:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.modal-body1 {
+  width: auto;
+  overflow: auto;
+  opacity: 0.8;
+  margin: 0;
+}
+.chat_body{
+  height: 60vh;
+  width: 100%;
+  overflow-y: auto;
+}.message{
+   display: block;
+   float: right;
+   height: auto;
+   padding: 5px;
+
+   width: 70%;
+   background-color: #e2e2e2;
+   border-radius: 7px;
+   margin-top: 2px;
+   margin-left: 2px;
+ }
+.name{
+  top: 0;
+  display: block;
+  left: 0;
+  float: left;
+  font-size: 10px;
+}
+
+.content{
+
+  display: block;
+  left: 0;
+  float: left;
+}
+.date{
+
+  display: block;
+  font-size: 8px;
+  float: right;
+}
+@media  (max-width: 368px) {
+  .modal-content1{
+
+    width: 100%;
+
+  }
+}
+.modal-footer1 {
+  opacity: 0.5;
+  color: black;
+}
+.modal-body1 p{
+  opacity: 1;
+}
+/*Стилі для сколбара*/
+::-webkit-scrollbar{
+  width:6px;
+
+}
+::-webkit-scrollbar-thumb{
+  border-width:1px 1px 1px 2px;
+  border-color: #777;
+  background-color: #aaa;border-radius: 15px;
+
+}
+::-webkit-scrollbar-thumb:hover{
+  border-width: 1px 1px 1px 2px;
+  border-color: #555;
+  background-color: #777;
+}
+::-webkit-scrollbar-track{
+  border-width:0;
+}
+::-webkit-scrollbar-track:hover{
+  background-color: #e7e7e7;
+}
+
+
+/*back_panel*/
+
+
+.back_panel{
+  width: 20%;
+  background-color: #f7f7f7;
+}
+.back_panel_online{
+  height: 80vh;
+  width: 100%;
+  overflow-y: auto;
+
+}
+ .list-group-item-action.active {
+  z-index: 1;
+  color: #000000;
+  border: none;
+  background-color: white;
+}
+ .list-group-item-action{
+  color: #000000;
+  border: none;
+  background-color: #f7f7f7;
+  border-radius: 0;
+
+}
+
+/*.list-group-item-action:hover{
+
+  background-color: #fdfdfd;
+  border-radius: 0;
+}
+*/
+/* logo*/
+.imgW {
+  border: 1px solid gray;
+  width: 20vh;
+  height: 20vh;
+  position: relative;
+}
+.imgW>img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.listhover{
+}
+.listhover:hover{
+background-color: white;
+}
+.listhover:active{
+  background-color: #d0e4fb;
+}

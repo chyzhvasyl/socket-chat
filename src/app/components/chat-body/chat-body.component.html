@@ -1,0 +1,170 @@
+<div class="chat">
+  <div   class="chat_block ">
+    <!-- Modal content -->
+    <div class="modal-content1">
+      <div   class="modal-header1">
+
+        <div class="row">
+          <div class="col-sm-3">
+
+            <img width="170px"  class="img-fluid"    src="../../../assets/images/rick.png">
+          </div>
+          <div class="col-sm-9">
+
+            <h2>
+              Reverse bot
+            </h2>
+            {{online_users}}
+            <!--<p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Phasellus nisl orci, sagittis quis consequat et,
+              luctus non urna. Aliquam vitae ullamcorper mi.
+              Nunc in diam leo. Nulla ut elementum metus.
+              Maecenas velit risus, egestas id porta et, ultricies eget odio.
+              Integer sed maximus massa, ut sagittis libero.
+              Morbi eget purus pellentesque, rhoncus sem ut, sodales elit.
+              Suspendisse libero velit, volutpat ut blandit non, hendrerit a quam.
+            </p>
+-->
+
+            <div class="tab-content" id="nav-tabContent1">
+
+              <div class="tab-pane fade show active" id="list-profile1" role="tabpanel" aria-labelledby="list-profile-list1">2</div>
+              <div class="tab-pane fade" id="list-profile3" role="tabpanel" aria-labelledby="list-profile-list3">3</div>
+            </div>
+            <!--
+                      <div class="row m-0">
+                        <div class="col-12 p-0">
+                          <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">online</div>
+                            <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">All</div>
+                          </div>
+                        </div>
+                      </div>  -->
+          </div>
+        </div>
+
+
+
+      </div>
+      <div class="modal-body1 ">
+        <!-- chat -->
+
+          <div  class="chat_body" >
+
+            <div *ngFor="let message  of message_array;" class="message">
+                <div class="name">
+                  {{message._id}}
+                </div>
+                <br>
+                <div class="content">
+                  {{message.content}}
+                </div>
+                <br>
+                <div class="date">
+                  {{message.date}}
+                </div>
+            </div>
+          </div>
+          <form  class="p-1 form-inline" (ngSubmit)="sendMessage()"  >
+            <div style="width: 65%" class="form-group ml-3">
+              <input [(ngModel)]="message.content" #content = "ngModel"  style="width: 100%"   name="content" required pattern=""  class="form-control"    placeholder="write smth">
+            </div>
+            <button [disabled]="content.invalid" type="submit" style="width: 30%"   class="btn btn-info ml-2">send</button>
+          </form>
+
+
+      </div>
+      <!-- <div class="modal-footer1">
+         <h3>Modal Footer</h3>
+       </div>
+       -->
+    </div>
+  </div>
+
+  <div class="back_panel">
+
+    <div class="row m-0">
+<div class="col-12 p-0">
+
+
+        <div class="list-group flex-row" id="list-tab2" role="tablist">
+          <a class="list-group-item list-group-item-action active p-1" id="list-home-list2" data-toggle="list" href="#list-home2" role="tab" aria-controls="home2">Online</a>
+          <a class="list-group-item list-group-item-action p-1" id="list-profile-list2" data-toggle="list" href="#list-profile2" role="tab" aria-controls="profile2">All</a>
+
+      </div>
+</div>
+
+
+    </div>
+
+    <div class="row m-0">
+      <div class="col-12 p-0">
+      <div class="tab-content" id="nav-tabContent2">
+        <div class="tab-pane fade show active" id="list-home2" role="tabpanel" aria-labelledby="list-home-list2">
+
+          <div class="row m-0">
+            <div class="col-12 p-0">
+
+              <div class="list-group" id="list-tab1" role="tablist">
+
+                <a  class="list-group-item list-group-item-action active " id="list-profile-list1" data-toggle="list" href="#list-profile1" role="tab" aria-controls="profile1">
+<div class="row">
+                  <div class="col-4 p-0   ">
+                   2
+                  </div>
+
+
+                    <div class="col-8 p-0   ">
+                      2
+                    </div>
+                  </div>
+
+
+                </a>
+                <a  class="list-group-item list-group-item-action d-inline-block " id="list-profile-list3" data-toggle="list" href="#list-profile3" role="tab" aria-controls="profile3">
+<div class="row">
+                  <div class="col-4 p-0   ">
+                   3
+                  </div>
+
+
+                  <div class="col-8 p-0   ">
+                    3
+                  </div>
+                  </div>
+                </a>
+              </div>
+
+
+            </div>
+
+          </div>
+
+        </div>
+        <div class="tab-pane fade" id="list-profile2" role="tabpanel" aria-labelledby="list-settings-list2">
+
+
+<div class="back_panel_online">
+          <div   *ngFor="let online of online_users  | filterUser : query" class="list-group">
+
+            <a (click)="openChat(online)" style="" href="#" class="list-group-item list-group-item-action listhover flex-column align-items-start">
+              <div class="d-flex w-100 justify-content-between">
+                <p class="mb-1">  {{online.substr(0,8) + '...'}} </p><br>
+
+              </div>
+              <div><img width="100px" class="img-fluid" src="../../../assets/images/200.png"></div>
+              <p class="mb-1"> </p>
+              <small class="text-muted">Donec id elit non mi porta.</small>
+            </a>
+          </div>
+</div>
+          <div   class="form-group  mt-2">
+            <input  type="text" [(ngModel)]="query"    style="width: 90%"   name="content" required pattern=""  class="form-control"    placeholder="write smth">
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
