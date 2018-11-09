@@ -8,10 +8,14 @@ import {WebsocketService} from './services/websocket.service';
 import {ChatService} from './services/chat.service';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
+import { FilterUserPipe } from './components/pipes/filter-user.pipe';
+import { BackpanelComponent } from './components/backpanel/backpanel.component';
 @NgModule({
   declarations: [
     AppComponent,
-    ChatBodyComponent
+    ChatBodyComponent,
+    FilterUserPipe,
+    BackpanelComponent
   ],
   imports: [
     BrowserModule, FormsModule, HttpClientModule, ReactiveFormsModule

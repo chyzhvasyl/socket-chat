@@ -14,6 +14,7 @@
             <h2>
               Reverse bot
             </h2>
+            {{online_users}}
             <!--<p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               Phasellus nisl orci, sagittis quis consequat et,
@@ -64,14 +65,12 @@
                   {{message.date}}
                 </div>
             </div>
-
-
           </div>
           <form  class="p-1 form-inline" (ngSubmit)="sendMessage()"  >
             <div style="width: 65%" class="form-group ml-3">
               <input [(ngModel)]="message.content" #content = "ngModel"  style="width: 100%"   name="content" required pattern=""  class="form-control"    placeholder="write smth">
             </div>
-            <button [disabled]="content.invalid || content.untouched" type="submit" style="width: 30%"   class="btn btn-info ml-2">send</button>
+            <button [disabled]="content.invalid" type="submit" style="width: 30%"   class="btn btn-info ml-2">send</button>
           </form>
 
 
@@ -145,22 +144,27 @@
         </div>
         <div class="tab-pane fade" id="list-profile2" role="tabpanel" aria-labelledby="list-settings-list2">
 
-          <div *ngFor="let online of online_users">
-            {{online}}
-          </div>
 
+<div class="back_panel_online">
+          <div   *ngFor="let online of online_users  | filterUser : query" class="list-group">
+
+            <a (click)="openChat(online)" style="" href="#" class="list-group-item list-group-item-action listhover flex-column align-items-start">
+              <div class="d-flex w-100 justify-content-between">
+                <p class="mb-1">  {{online.substr(0,8) + '...'}} </p><br>
+
+              </div>
+              <div><img width="100px" class="img-fluid" src="../../../assets/images/200.png"></div>
+              <p class="mb-1"> </p>
+              <small class="text-muted">Donec id elit non mi porta.</small>
+            </a>
+          </div>
+</div>
+          <div   class="form-group  mt-2">
+            <input  type="text" [(ngModel)]="query"    style="width: 90%"   name="content" required pattern=""  class="form-control"    placeholder="write smth">
+          </div>
         </div>
       </div>
     </div>
     </div>
-
-
-
-
-
-
-
-
   </div>
-
 </div>
