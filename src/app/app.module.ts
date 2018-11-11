@@ -10,6 +10,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { FilterUserPipe } from './components/pipes/filter-user.pipe';
 import { BackpanelComponent } from './components/backpanel/backpanel.component';
+import { CookieService } from 'angular2-cookie/services/cookies.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +21,7 @@ import { BackpanelComponent } from './components/backpanel/backpanel.component';
   imports: [
     BrowserModule, FormsModule, HttpClientModule, ReactiveFormsModule
   ],
-  providers: [WebsocketService, ChatService],
+  providers: [WebsocketService, ChatService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

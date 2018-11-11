@@ -14,7 +14,10 @@
             <h2>
               Reverse bot
             </h2>
-            {{online_users}}
+<div  >
+  {{socket_user_id}}
+</div>
+
             <!--<p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               Phasellus nisl orci, sagittis quis consequat et,
@@ -29,7 +32,7 @@
 
             <div class="tab-content" id="nav-tabContent1">
 
-              <div class="tab-pane fade show active" id="list-profile1" role="tabpanel" aria-labelledby="list-profile-list1">2</div>
+              <div class="tab-pane fade show active" id="list-profile1" role="tabpanel" aria-labelledby="list-profile-list1">Revers bot це пізда</div>
               <div class="tab-pane fade" id="list-profile3" role="tabpanel" aria-labelledby="list-profile-list3">3</div>
             </div>
             <!--
@@ -52,9 +55,10 @@
 
           <div  class="chat_body" >
 
-            <div *ngFor="let message  of message_array;" class="message">
+            <div *ngFor="let message  of message_array;">
+              <div class="message" [ngClass]="{'message_from': message.from_me === false}">
                 <div class="name">
-                  {{message._id}}
+                  {{message.id}}
                 </div>
                 <br>
                 <div class="content">
@@ -64,7 +68,22 @@
                 <div class="date">
                   {{message.date}}
                 </div>
+              </div>
+
             </div>
+           <!-- <div *ngFor="let message  of message_array_me;" class="message">
+              <div class="name">
+                {{message.id}}
+              </div>
+              <br>
+              <div class="content">
+                {{message.content}}
+              </div>
+              <br>
+              <div class="date">
+                {{message.date}}
+              </div>
+            </div> -->
           </div>
           <form  class="p-1 form-inline" (ngSubmit)="sendMessage()"  >
             <div style="width: 65%" class="form-group ml-3">
@@ -108,15 +127,13 @@
 
               <div class="list-group" id="list-tab1" role="tablist">
 
-                <a  class="list-group-item list-group-item-action active " id="list-profile-list1" data-toggle="list" href="#list-profile1" role="tab" aria-controls="profile1">
+                <a   class="list-group-item list-group-item-action active " id="list-profile-list1" data-toggle="list" href="#list-profile1" role="tab" aria-controls="profile1">
 <div class="row">
                   <div class="col-4 p-0   ">
-                   2
+                 Reverse Bot
                   </div>
-
-
                     <div class="col-8 p-0   ">
-                      2
+                      loren ipsum
                     </div>
                   </div>
 

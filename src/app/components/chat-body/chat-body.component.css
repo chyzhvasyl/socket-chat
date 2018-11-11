@@ -47,13 +47,25 @@
    float: right;
    height: auto;
    padding: 5px;
-
    width: 70%;
-   background-color: #e2e2e2;
+   background-color: #bbe2ba;
    border-radius: 7px;
    margin-top: 2px;
    margin-left: 2px;
+   word-wrap: break-word;
  }
+.message_from{
+  display: block;
+  float: left;
+  height: auto;
+  padding: 5px;
+  width: 70%;
+  background-color: rgb(203, 218, 255);
+  border-radius: 7px;
+  margin-top: 2px;
+  margin-left: 2px;
+  word-wrap: break-word;
+}
 .name{
   top: 0;
   display: block;
