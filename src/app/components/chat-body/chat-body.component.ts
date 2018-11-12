@@ -18,19 +18,19 @@ export class ChatBodyComponent implements OnInit {
   result: object;
   message: Message = new Message();
   message_array: any = [];
-  message_array_me: any = [];
   online_users;
   query = '';
   connection;
   sendTo: string;
   socket_user_id;
   from_me: boolean;
-
+  botes: any[];
+  event: string;
+  toggle = false;
 
   constructor( private chatservice: ChatService, private websocketservice: WebsocketService,  private _cookieService:CookieService)
   {
-
-
+    this.botes = this.chatservice.getimages()
   }
 
   chat_autoscroll() {
@@ -40,24 +40,17 @@ export class ChatBodyComponent implements OnInit {
       chat_body.scrollTop(chat_height);
     });
   }
-
+  select_bote(event){
+    this.message_array = [];
+    this.event = event;
+    console.log('event',event)
+}
   openChat(socketId ){
     this.message_array = [];
     this.websocketservice.sendSocketIdUser(socketId) ;
     this.sendTo = socketId;
   }
 
-  getown(){
-
-    this.websocketservice.getYourSocket().subscribe(socket => {
-
-        this.socket_user_id = socket;
-
-        return this.socket_user_id
-
-
-    });
-  }
   getCookie(key: string){
     console.log('getCookie', this._cookieService.get(key) );
     return this._cookieService.get(key);
@@ -75,17 +68,10 @@ export class ChatBodyComponent implements OnInit {
       this.online_users = socket;
       if (this.online_users){
       }
-
     });
     this.websocketservice.getBotSocket().subscribe(socket => {
        console.log('socket_ID',socket);
-
-
     });
-
-
-this.getCookie('io');
-
     this.websocketservice.getMessageFromUser().subscribe(message => {
       console.log('getMessageFromUser', message);
       this.message_array.push(message);
@@ -99,21 +85,38 @@ this.getCookie('io');
     });
 
 
-    //this.websocketservice.getMessages().subscribe(message => {
-    //  this.message_array = message;
-    //  this.message_array.reverse();
-    //  this.chat_autoscroll();
-    //});
-
-   // this.websocketservice.getMessage().subscribe( message   => {
-   //   this.message_array.push(message);
-   //   this.chat_autoscroll();
-   //   this.message.content = '';
-   // });
-
 
   }
+  select_chat(){
+this.toggle = !this.toggle;
+  }
+ send(){
+    if (!this.toggle){
+      this.send_message_to_bot();
 
+    }else{
+      this.sendMessage();
+    }
+ }
+  send_message_to_bot(){
+    this.websocketservice.send_message_to_bot({body: this.message.content, from_me: this.from_me = true}, this.event );
+    //this.message_array.push({content: this.message.content});
+    this.chat_autoscroll();
+    this.message.content = '';
+    this.websocketservice.getResponseFromBot().subscribe(message => {
+      this.message_array.push(message);
+    });
+  }
+  ngOnDestroy() {
+  }
+  _keyPress(event: any) {
+    const pattern = /[a-zA-Z-0-9]/;
+    let inputChar = String.fromCharCode(event.charCode);
+    if (!pattern.test(inputChar)) {
+      // invalid character, prevent input
+      event.preventDefault();
+    }
+  }
   sendMessage(){
     this.websocketservice.send_message({body: this.message.content, sendTo: this.sendTo, from_me: this.from_me = true});
 
@@ -122,6 +125,7 @@ this.getCookie('io');
     this.chat_autoscroll();
     this.message.content = '';
   }
+
 //old version
   // public ngOnInit(): void {
 //
@@ -150,7 +154,6 @@ this.getCookie('io');
 //
 //
   // }
-
 
   // sendMessage()
   // {

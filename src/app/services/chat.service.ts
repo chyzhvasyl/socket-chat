@@ -21,5 +21,15 @@ export class ChatService {
 //    this.messages.next(msg);
 //  }
 //
-
+  visible_images = [];
+  getimages (  )
+  {
+    return this.visible_images = images.slice(0);
+  }
 }
+const images = [
+  {'id': 'echo', 'name': 'echo bot', 'url':    'assets/images/chat_bot_1.png', 'event': 'echo_bote'     },
+  {'id': 'reverse', 'name': 'reverse bot', 'url': 'assets/images/chat_bot_2.jpg', 'event': 'reverse_bote'   },
+  {'id': 'ignore', 'name': 'ignore bot', 'url':  'assets/images/chat_bot_3.jpg' , 'event': 'ignore_bote'   },
+  {'id': 'spam', 'name': 'spam bot', 'url':    'assets/images/chat_bot_4.png'   , 'event': 'spam_bote'   }
+];

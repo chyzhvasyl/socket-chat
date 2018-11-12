@@ -9,14 +9,45 @@ import {EventEmitter} from '@angular/core';
 @Injectable()
 export class WebsocketService {
   private socket;
+  private bot_connection;
   online_users = [];
   socket_user_id: string;
+  event:string  ;
   constructor() {
     this.socket = io(environment.ws_url);
+    this.bot_connection = io(environment.bot_url /* + `?reverse_bot` */);
+
   }
 
 
+  send_message_to_bot(message, event)
+  {
+    this.event = event;
+    console.log('this.event = event',this.event );
+    this.bot_connection.emit(event, message);
+  }
 
+
+  getResponseFromBot() {
+      return new Observable(observer => {
+
+        this.bot_connection.on(this.event, (messages) => {
+          console.log('this.event',this.event);
+          observer.next(messages);
+        });
+      });
+  }
+
+
+ // send_message_to_bot(message)
+ // {
+ //   const update = {
+ //     message: {
+ //       text: message
+ //     }
+ //   };
+ //   this.bot_connection.send(  update);
+ // }
   getMessages() {
     return new Observable(observer => {
       this.socket.on('history', (messages) => {
@@ -128,6 +159,7 @@ getBotSocket(){
     this.socket.emit('send_message_to_user', message);
   }
 
+
  // getMessage() {
  //   const observable = new Observable(observer => {
  //     this.socket.on('send_message_to_user', (data) => {
@@ -140,11 +172,6 @@ getBotSocket(){
  //   });
  //   return observable;
  // }
-
-
-
-
-
 
   //connect(): Rx.Subject<MessageEvent> {
   //  this.socket = io(environment.ws_url);

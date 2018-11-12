@@ -1,7 +1,8 @@
 let message_scheme = require('../schems/message');
 
-module.exports = io =>{
 
+
+module.exports = io =>{
   io.on("connection", function (socket)   {
     io.engine = io.eio;
     let allConnected = Object.keys(io.engine.clients);
@@ -13,7 +14,6 @@ module.exports = io =>{
       console.log('User connected', alConnected);
     });
     //io.emit('reverse_bot', socket.id);
-
     io.emit('ConnectYourSockedId',  socket.id);
     console.log('new connection made',  socket.id);
     socket.on('DisconnectYourSockedId', () => {

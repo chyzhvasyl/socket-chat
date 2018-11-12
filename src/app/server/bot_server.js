@@ -1,7 +1,6 @@
-//Imports
+
 let express = require('express');
 let app = express();
-let mongoose      = require  ('mongoose') ;
 let bodyParser    = require  ('body-parser') ;
 let cors          = require  ('cors') ;
 let corsOptions   = require  ('./config/cors') ;
@@ -12,31 +11,16 @@ let path = require('path');
 let intel = require('intel');
 let fs = require('fs');
 let morgan =  require('morgan');
-let Botmaster = require('botmaster');
-let SocketioBot = require('botmaster-socket.io');
-let cookieParser = require('cookie-parser');
 // виносимо в окремий модуль
 app.options('*', cors(corsOptions));
-const socketIO = require('socket.io');
-const server = http.createServer(app);
-const io = socketIO(server);
-require('./socket_chat/socket_chat')(io);
-
-
-//app.use(express.static(path.join(__dirname, '../../../dist')));
-//
-//app.get('*', (req, res) => {
-//  res.sendFile(path.join(__dirname, '../../../dist/index.html'));
-//});
-
+let socketIO = require('socket.io');
+let server = http.createServer(app);
+let io = socketIO(server);
+require('./socket_chat/bot_socket')(io);
 
 
 /* логгирование */
 // intel.addHandler(new intel.handlers.File('./logs/file.log'));
-
-
-
-/* логгирование */
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use((req, res, next) => {
@@ -49,21 +33,12 @@ const accessLogStream = fs.createWriteStream(path.join(__dirname, './logs/access
 // *** config middleware *** //
 app.use(bodyParser.json({limit: "50mb"}));
 app.use(bodyParser.raw({limit: "50mb", extended: true, parameterLimit:50000}));
-app.use(morgan(':method :url :status :res[content-length] - :response-time ms :date[clf] :http-version', {stream: accessLogStream}));
-app.use(cookieParser());
 app.get('/', (req, res) => {});
 app.post('/', (req, res) => {});
 app.use(express.static(path.join(__dirname, "/")));
 
-mongoose.connect(config.db.database, { useNewUrlParser: true },(err, res) => {
-  if(err) {
-    console.log('Database error: ' + err);
-  } else {
-    console.log('Connected to database ' + config.db.database);
-  }
-});
-mongoose.Promise = require('bluebird');
-server.listen(config.serverPort, config.serverBotHost,() => console.log(`Socket server is running on localhost:${config.serverPort}`));
+
+server.listen(config.serverBotPort,  config.serverBotHost,() => console.log(`Bot - Server listening at port %d:${config.serverBotPort}`));
 
 
 
